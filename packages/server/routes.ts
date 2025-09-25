@@ -16,4 +16,8 @@ router.get('/api/hello', (req: Request, res: Response) => {
 router.post('/api/chat', chatController.sendMessage);
 
 router.get('/api/products/:id/reviews', ReviewController.getReviews);
+router.post(
+   '/api/products/:id/reviews/summarize',
+   ReviewController.summarizeReviews
+);
 export default router;
