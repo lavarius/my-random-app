@@ -12,6 +12,7 @@ export const reviewService = {
       // check for any summary below expiresAt date
       const existingSummary =
          await reviewRepository.getReviewSummary(productId);
+
       if (existingSummary && existingSummary.expiresAt > new Date()) {
          return existingSummary.content;
       }
