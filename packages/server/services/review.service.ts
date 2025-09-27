@@ -1,20 +1,15 @@
-import { type Review } from '../generated/prisma';
 import { reviewRepository } from '../repositories/review.respository';
 import { llmClient } from '../llm/client';
 import template from '../prompts/summarize-reviews.txt';
 
 export const reviewService = {
-   async getReviews(productId: number): Promise<Review[]> {
-      return reviewRepository.getReviews(productId);
-   },
-
    async summarizeReviews(productId: number): Promise<string> {
       // check for any summary below expiresAt date
       const existingSummary =
          await reviewRepository.getReviewSummary(productId);
 
-      if (existingSummary && existingSummary.expiresAt > new Date()) {
-         return existingSummary.content;
+      if (existingSummary) {
+         return existingSummary;
       }
 
       // Get the last 10 reviews
