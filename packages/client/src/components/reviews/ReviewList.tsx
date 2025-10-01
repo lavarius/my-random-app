@@ -4,7 +4,6 @@ import { HiSparkles } from 'react-icons/hi2';
 import StarRating from './StarRating';
 import { useMutation, useQuery } from '@tanstack/react-query';
 import { Button } from '../ui/button';
-import { useState } from 'react';
 import ReviewSkeleton from './ReviewSkeleton';
 import {
    reviewsApi,
